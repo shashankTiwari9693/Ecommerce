@@ -1,0 +1,105 @@
+<div class="header">
+  <div style="display: flex; width: 173px; margin-top: 5px; margin-left: 30px">
+    <img class="logo" src="assets/img/Logo.png" alt="Logo" />
+    <p
+      style="
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        margin-top: 13px;
+        font-size: 20px;
+      "
+    >
+      <b>Luminae</b>
+    </p>
+    <div
+      class="search-bar"
+      style="display: flex; margin-top: 13px; margin-left: 10px"
+    >
+      <input
+        style="width: 345px; height: 30px"
+        type="text"
+        placeholder="Search Product"
+      />
+      <div>
+        <img class="search-icon" src="assets/img/Search.png" alt="search" />
+      </div>
+    </div>
+  </div>
+  <div class="headerGrey">
+    <div style="display: flex">
+      <img class="categories" src="assets/img/categories.png" alt="Logo" />
+      <p
+        style="
+          font-family: Verdana, Geneva, Tahoma, sans-serif;
+          font-size: 13px;
+          color: white;
+          margin-top: 19px;
+          margin-left: 5px;
+        "
+      >
+        Categories
+      </p>
+    </div>
+    <div class="vertical-line"></div>
+    <div><img class="Text1" src="assets/img/Text1.png" alt="Logo" /></div>
+    <div style="display: list-item">
+      <div>
+        <a [routerLink]="['/Login']">
+          <img class="Sign" src="assets/img/Sign in.png" alt="Logo" />
+        </a>
+      </div>
+      <div>
+        <a routerLink="/Cart">
+          <img
+            
+            class="Cart"
+            src="assets/img/Card.png"
+            alt="Logo"
+          />
+        </a>
+      </div>
+    </div>
+    <!-- <div>
+        <img class="Top" src="assets/img/Top.png" alt="Logo" />
+    </div> -->
+    <div style="margin-top: 10px">
+      <div
+        id="carouselExampleInterval"
+        class="carousel slide"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="10000">
+            <img
+              src="assets/img/dellBanner1.jpg"
+              class="d-block w-100"
+              alt="..."
+            />
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleInterval"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleInterval"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<app-product-list
+  style="display: flex; flex-wrap: wrap; flex-direction: row; margin-top: 480px"
+></app-product-list>
+<!-- <a style="color: brown; " href="/Login">Sign In</a> -->
+<router-outlet></router-outlet>

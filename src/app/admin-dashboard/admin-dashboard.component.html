@@ -1,0 +1,402 @@
+<div class="container mt-2 d-flex">
+
+<p class="h4 ml-2 text-center col-md-11">Admin DashBoard</p>
+<button [routerLink]="['/Home']" type="button" class="btn btn-success  ">
+  Home
+</button>
+</div>
+
+<div class="container mt-2">
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a
+        class="nav-link active"
+        id="home-tab"
+        data-toggle="tab"
+        href="#home"
+        role="tab"
+        aria-controls="home"
+        aria-selected="true"
+        >Add Product</a
+      >
+    </li>
+
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        id="profile-tab"
+        data-toggle="tab"
+        href="#profile"
+        role="tab"
+        aria-controls="profile"
+        aria-selected="false"
+        >Product List</a
+      >
+    </li>
+
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        id="addCustomer-tab"
+        data-toggle="tab"
+        href="#addCustomer"
+        role="tab"
+        aria-controls="addCustomer"
+        aria-selected="false"
+        >Add Customer</a
+      >
+    </li>
+
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        id="ShowCustomer-tab"
+        data-toggle="tab"
+        href="#showCustomer"
+        role="tab"
+        aria-controls="showCustomer"
+        aria-selected="false"
+        >Customer List</a
+      >
+    </li>
+  </ul>
+
+  <div class="tab-content" id="myTabContent">
+    <div
+      class="tab-pane fade show active"
+      id="home"
+      role="tabpanel"
+      aria-labelledby="home-tab"
+    >
+      <form
+        [formGroup]="productForm"
+        (ngSubmit)="SubmitForm()"
+        novalidate
+        class="was-validated"
+      >
+        <div class="form-group">
+          <label for="name">Id</label>
+
+          <input
+            type="number"
+            class="form-control"
+            name="id"
+            formControlName="id"
+            id="id"
+            placeholder="Enter product Id"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="name">Name</label>
+
+          <input
+            type="text"
+            class="form-control"
+            name="name"
+            formControlName="name"
+            id="name"
+            placeholder="Enter product name"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="description">Description</label>
+
+          <textarea
+            class="form-control"
+            id="description"
+            formControlName="description"
+            name="Description"
+            rows="3"
+            placeholder="Enter product description"
+            required
+          ></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="category">Price</label>
+
+          <input
+            type="number"
+            class="form-control"
+            formControlName="price"
+            name="price"
+            id="price"
+            placeholder="Enter product Price"
+            required
+            maxlength="10" minlength="10"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="category">Category</label>
+
+          <input
+            type="text"
+            class="form-control"
+            formControlName="category"
+            name="category"
+            id="category"
+            placeholder="Enter product category"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="quantity">Quantity</label>
+
+          <input
+            type="number"
+            class="form-control"
+            formControlName="quantity"
+            name="quantity"
+            id="quantity"
+            placeholder="Enter product quantity"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="image">Image Upload</label>
+
+          <input
+            type="text"
+            class="form-control"
+            formControlName="images"
+            name="images"
+            id="images"
+            placeholder="Enter Image Url"
+            required
+          />
+        </div>
+
+        <div class="mt-2">
+          <button type="submit" class="btn ml-2 mr-2 btn-primary">
+            Submit
+          </button>
+
+          <button type="reset" class="btn ml-2 mr-2 btn-secondary">
+            Reset
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div
+      class="tab-pane fade"
+      id="profile"
+      role="tabpanel"
+      aria-labelledby="profile-tab"
+    >
+      <p class="h1">Products</p>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Sl no</th>
+
+            <th scope="col">Image</th>
+
+            <th scope="col">Product Name</th>
+
+            <th scope="col">Description</th>
+
+            <th scope="col">Price</th>
+
+            <th scope="col">Edit</th>
+
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+
+        <tbody *ngFor="let tempProduct of products; let i = index">
+          <tr></tr>
+
+          <tr>
+            <th scope="row">{{ i + 1 }}</th>
+
+            <td>
+              <img
+                src="{{ tempProduct.images }}"
+                style="height: 50px; width: 50px"
+              />
+            </td>
+
+            <td>{{ tempProduct.name }}</td>
+
+            <td>{{ tempProduct.description }}</td>
+
+            <td>{{ tempProduct.price }}</td>
+
+            <td>
+              <button
+                type="button"
+                class="btn btn-primary"
+                (click)="GetProductByID(tempProduct.id)"
+              >
+                Edit
+              </button>
+            </td>
+
+            <td>
+              <button
+                type="button"
+                class="btn btn-danger"
+                (click)="DeleteConfirmation(tempProduct.id)"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div
+      class="tab-pane fade"
+      id="addCustomer"
+      role="tabpanel"
+      aria-labelledby="addCustomer-tab"
+    >
+      <form
+        [formGroup]="userForm"
+        (ngSubmit)="SubmitForm1()"
+        novalidate
+        class="was-validated"
+      >
+        <div class="form-group">
+          <label for="name">Username</label>
+
+          <input
+            type="text"
+            class="form-control"
+            name="username"
+            formControlName="username"
+            id="username"
+            placeholder="Enter Username"
+            required
+            minlength="3"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="name">Password</label>
+
+          <input
+            type="text"
+            class="form-control"
+            name="password"
+            formControlName="password"
+            id="password"
+            placeholder="Enter password"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="description">Email</label>
+
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            formControlName="email"
+            name="email"
+            rows="3"
+            placeholder="Enter Email Id"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="category">Phone Number</label>
+
+          <input
+            type="text"
+            class="form-control"
+            formControlName="phone"
+            name="phone"
+            id="phone"
+            placeholder="Enter Phone Number"
+            required
+            maxlength="10" minlength="10"
+          />
+        </div>
+
+        <div class="mt-2">
+          <button type="submit" class="btn ml-2 mr-2 btn-primary">
+            Submit
+          </button>
+
+          <button type="reset" class="btn ml-2 mr-2 btn-secondary">
+            Reset
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div
+      class="tab-pane fade"
+      id="showCustomer"
+      role="tabpanel"
+      aria-labelledby="ShowCustomer-tab"
+    >
+      <p class="h1">Customers</p>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Sl no</th>
+
+            <th scope="col">Username</th>
+
+            <th scope="col">Email Id</th>
+
+            <th scope="col">Phone Number</th>
+
+            <th scope="col">Password</th>
+          </tr>
+        </thead>
+
+        <tbody *ngFor="let cust of customer; let i = index">
+          <tr></tr>
+
+          <tr>
+            <th scope="row">{{ i + 1 }}</th>
+
+            <td>{{ cust.username }}</td>
+
+            <td>{{ cust.email }}</td>
+
+            <td>{{ cust.phone }}</td>
+
+            <td>{{ cust.password }}</td>
+
+            <td>
+              <button
+                type="button"
+                class="btn btn-primary"
+                (click)="GetUserByID(cust.id)"
+              >
+                Edit
+              </button>
+            </td>
+
+            <td>
+              <button
+                type="button"
+                class="btn btn-danger"
+                (click)="DeleteUserByID(cust.id)"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

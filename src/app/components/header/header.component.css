@@ -1,0 +1,78 @@
+
+.header{
+    width:1219px;
+    height: 53px;
+    margin-left: -10px;
+    
+}   
+.Top{
+    margin-top: 10px;
+    width: 1234px;
+    height: 350px;
+}
+.logo{
+    width: 49px;
+    height: 33px;
+    margin-top: 4px;
+    margin-right: 4px;
+}
+.headerGrey{
+width: 1225px;
+height: 60px;
+background-color: black;
+}
+.search-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .search-icon {
+    width: 25px;
+    height: 25px;
+    margin-top: 3px;
+    display: flex;
+    align-items: center;
+    margin-left: -40px; 
+  }
+  .categories{
+    width: 21px;
+    height: 21px;
+    margin-top: 17px;
+    margin-left: 40px;
+  }
+  .vertical-line {
+    border-left: 1px solid #7B7B7B; 
+    height: 40px; 
+    display: flex;
+    margin-left: 400px;
+    margin-top: -40px;
+}
+
+
+.Text1{
+    display: flex;
+    height: 50px;
+    margin-left: 450px;
+    margin-top: -46px;
+}
+.Sign{
+    display: flex;
+    height: 30px;
+    width: 30px;
+    margin-left: 850px;
+    margin-top: -34px;
+}
+.Cart{
+    display: flex;
+    height: 30px;
+    width: 30px;
+    margin-left: 950px;
+    margin-top: -27px;    
+}
+.Favroides{
+    display: flex;
+    height: 30px;
+    width: 30px;
+    margin-left: 1033px;
+    margin-top: -32px; 
+}
